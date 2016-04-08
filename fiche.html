@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- CSS -->
+<link href='css/fiche.css' rel='stylesheet' type='text/css'>
+
+<!-- Timeline -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- Data -->
+<script type="text/javascript" src="data/comment-data.js"></script>
+
+<!-- Comment -->
+<link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-comments.js"></script>
+
+<!-- Timeline -->
+<script type="text/javascript">
+	google.charts.load("current", {packages:["timeline"]});
+	google.charts.setOnLoadCallback(drawChart);
+	function drawChart() {
+		var container = document.getElementById('timeline');
+		var chart = new google.visualization.Timeline(container);
+		var dataTable = new google.visualization.DataTable();
+
+		dataTable.addColumn({ type: 'string', id: 'Role' });
+		dataTable.addColumn({ type: 'string', id: 'Name' });
+		dataTable.addColumn({ type: 'date', id: 'Start' });
+		dataTable.addColumn({ type: 'date', id: 'End' });
+		dataTable.addRows([
+			[ 'Formation', 'ESSEC', new Date(2016, 7, 1), new Date(2018, 4, 30) ],
+			[ 'Formation', "Recherche d'emploi", new Date(2018, 4, 30), new Date(2018, 8, 30) ],
+			[ 'Formation', "Emplois trouves", new Date(2018, 9, 30), new Date(2018, 10, 30) ]
+			]);
+
+		var options = {
+			timeline: {
+				groupByRowLabel: true,
+				rowLabelStyle: {fontName: 'Helvetica', fontSize: 16, color: '#a4a4a4' },
+				barLabelStyle: {fontName: 'Garamond', fontSize: 14}
+			},
+			backgroundColor: '#4f4f4f'
+		};
+
+		chart.draw(dataTable, options);
+	}
+</script>
+
+<script type="text/javascript">
+	$(function() {
+		$('#comments-container').comments({
+			profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/user_profiles/user-icon.png',
+			roundProfilePictures: true,
+			textareaRows: 1,
+			enableAttachments: true,
+			forceResponsive: true,
+			getComments: function(success, error) {
+				setTimeout(function() {
+					success(commentsArray);
+				}, 500);
+			},
+			postComment: function(data, success, error) {
+				setTimeout(function() {
+					success(data);
+				}, 500);
+			},
+			putComment: function(data, success, error) {
+				setTimeout(function() {
+					success(data);
+				}, 500);
+			},
+			deleteComment: function(data, success, error) {
+				setTimeout(function() {
+					success();
+				}, 500);
+			},
+			upvoteComment: function(data, success, error) {
+				setTimeout(function() {
+					success(data);
+				}, 500);
+			},
+			uploadAttachments: function(dataArray, success, error) {
+				setTimeout(function() {
+					success(dataArray);
+				}, 500);
+			},
+		});
+	});
+</script>
+
+</head>
+
+<!-- DOM -->
+<body>
+	<div id="timeline" class="timeline"></div>
+	<div id="container-comments-container" class="comment">
+		<div id="comments-container"></div>
+	</div>
+</body>
+</html>

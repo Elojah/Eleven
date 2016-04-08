@@ -1,0 +1,17 @@
+body {
+	background-color: #f4f4f4;
+}
+
+header {
+}
+
+timeline {
+	height: 400px;
+	width: 100%;
+}
+
+comment {
+	height: 400px;
+	width: 200px;
+	overflow: hidden;
+}
