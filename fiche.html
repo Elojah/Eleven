@@ -93,13 +93,47 @@
 	});
 </script>
 
+<script type="text/javascript">
+
+	function whichAnimationEvent(){
+	  var t,
+	      el = document.createElement("fakeelement");
+	  var animations = {
+	  	"animation"      : "animationend",
+	  	"OAnimation"     : "oAnimationEnd",
+	  	"MozAnimation"   : "animationend",
+	  	"WebkitAnimation": "webkitAnimationEnd"
+	  }
+	  for (t in animations){
+	    if (el.style[t] !== undefined){
+	      return animations[t];
+	    }
+	  }
+	}
+	var animationEvent = whichAnimationEvent();
+	console.log(animationEvent);
+	console.log($('#load0'));
+
+	$('#load0').on(animationEvent, function (event) {
+		console.log("Animation ended")
+		$('#page0').css('visibility', 'hidden');
+		$('#page1').css('visibility', 'visible');
+	}
+	);
+
+</script>
+
 </head>
 
 <!-- DOM -->
 <body>
-	<div id="timeline" class="timeline"></div>
-	<div id="container-comments-container" class="comment">
-		<div id="comments-container"></div>
+	<div id="page0" class="full-page"></div>
+		<h1 id="load0" class="load0" data-content="Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?">Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?</h1>
+	<div id="page1" class="full-page">
+		<div id="timeline" class="timeline"></div>
+		<div id="container-comments-container" class="comment">
+			<div id="comments-container"></div>
+		</div>
 	</div>
 </body>
 </html>

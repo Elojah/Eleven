@@ -15,3 +15,43 @@ comment {
 	width: 200px;
 	overflow: hidden;
 }
+
+/**
+ * Loading animation like the one seen on http://www.freeger.com/projects/contextad/ with CSS
+ * Caveat: Not DRY. The content needs to be repeated in a data- attribute (or directly in the CSS).
+ */
+
+@keyframes loading {
+	from { max-width: 0; }
+}
+
+#load0 {
+	position: absolute;
+	margin-left: 20%;
+	margin-top: 20%;
+	color: #4f4f4f;
+	font: 900 800% Baskerville, 'Palatino Linotype', Palatino, serif;
+}
+
+#load0:before {
+	content: attr(data-content);
+	position: absolute;
+	overflow: hidden;
+	max-width: 10em;
+	color: white;
+	animation: loading 2.5s linear;
+}
+
+full-page {
+	margin: 0;
+	height: 100%;
+	width: 100%;
+}
+
+#page0 {
+	visibility: visible;
+}
+
+#page1 {
+	visibility: hidden;
+}
