@@ -2,21 +2,39 @@
 <html>
 <head>
 
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 <!-- CSS -->
 <link href='css/fiche.css' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/multi-screen-css.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+
+<!-- DOM -->
+<body>
+	<div id="screen1" class="ms-container ms-default">
+		<h1 id="load0" class="load0" data-content="Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?">Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?</h1>
+	</div>
+	<div id="screen2" class="ms-container">
+		<div id="timeline" class="timeline"></div>
+		<div id="container-comments-container" class="comment">
+			<div id="comments-container"></div>
+		</div>
+	</div>
+</body>
 
 <!-- Timeline -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
 <!-- Data -->
 <script type="text/javascript" src="data/comment-data.js"></script>
-
 <!-- Comment -->
-<link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/multi-screen.min.js"></script>
+<script type="text/javascript">$(document).ready(function() { MultiScreen.init(); });</script>
 <script type="text/javascript" src="js/jquery-comments.js"></script>
 
 <!-- Timeline -->
@@ -111,29 +129,14 @@
 	  }
 	}
 	var animationEvent = whichAnimationEvent();
-	console.log(animationEvent);
-	console.log($('#load0'));
 
-	$('#load0').on(animationEvent, function (event) {
+	var load0 = document.getElementById('load0');
+	load0.addEventListener(animationEvent, function (event) {
 		console.log("Animation ended")
-		$('#page0').css('visibility', 'hidden');
-		$('#page1').css('visibility', 'visible');
+		MultiScreen.switch_screens({target_id: 'screen2', 'animation_command': "bottom"});
 	}
 	);
 
 </script>
 
-</head>
-
-<!-- DOM -->
-<body>
-	<div id="page0" class="full-page"></div>
-		<h1 id="load0" class="load0" data-content="Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?">Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?</h1>
-	<div id="page1" class="full-page">
-		<div id="timeline" class="timeline"></div>
-		<div id="container-comments-container" class="comment">
-			<div id="comments-container"></div>
-		</div>
-	</div>
-</body>
 </html>
