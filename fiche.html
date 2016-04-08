@@ -44,7 +44,7 @@
 				rowLabelStyle: {fontName: 'Helvetica', fontSize: 16, color: '#a4a4a4' },
 				barLabelStyle: {fontName: 'Garamond', fontSize: 14}
 			},
-			backgroundColor: '#4f4f4f'
+			backgroundColor: '#f4f4f4'
 		};
 
 		chart.draw(dataTable, options);
@@ -93,13 +93,48 @@
 	});
 </script>
 
+<script type="text/javascript">
+	function initMap() {
+  var directionsDisplay = new google.maps.DirectionsRenderer;
+  var directionsService = new google.maps.DirectionsService;
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 14,
+    center: {lat: 37.77, lng: -122.447}
+  });
+  directionsDisplay.setMap(map);
+
+  calculateAndDisplayRoute(directionsService, directionsDisplay);
+}
+
+function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+  var selectedMode = "DRIVING";
+  directionsService.route({
+    origin: {lat: 48.580808, lng: 7.737442},  // Haight.
+    destination: {lat: 48.872898, lng: 2.390713},  // Ocean Beach.
+    // Note that Javascript allows us to access the constant
+    // using square brackets and a string value as its
+    // "property."
+    travelMode: google.maps.TravelMode[selectedMode]
+  }, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
+</script>
+
 </head>
 
 <!-- DOM -->
 <body>
 	<div id="timeline" class="timeline"></div>
-	<div id="container-comments-container" class="comment">
-		<div id="comments-container"></div>
-	</div>
+	<div id="map"></div>
+<	<div id="comments-container"></div>
 </body>
+</script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQE4ZUjkFVJjQ4jFn2C4nsJadlHBMtlLg&callback=initMap">
+    </script>
 </html>
