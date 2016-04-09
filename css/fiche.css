@@ -101,6 +101,15 @@ p {
 	animation: loading 3s linear;
 }
 
+.reverse {
+	-moz-transform: scaleY(-1);
+	-o-transform: scaleY(-1);
+	-webkit-transform: scaleY(-1);
+	transform: scaleY(-1);
+	filter: FlipV;
+	-ms-filter: "FlipV";
+}
+
 #screen3 {
 }
 
@@ -143,11 +152,13 @@ p {
 	text-align: center;
 }
 #timeline {
-	height: 250px;
+	position:abslute;
+	height: 40px;
 	width: 100%;
 }
 #timecont {
 	padding: 120px;
+	padding-top: 50px;
 	height: 250px;
 }
 

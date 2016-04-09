@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/multi-screen-css.css">
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <!-- Font -->
 <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:500' rel='stylesheet' type='text/css'>
@@ -37,7 +37,7 @@
 			<img id="img2" src="img/criteres.jpg" class="ms-nav-link" data-ms-target="screen3" data-ms-animation="right"></img>
 		</div>
 	</div>
-	<div id="screen3" class="ms-container ms-default">
+	<div id="screen3" class="ms-container">
 		<h1 id="load1" class="load0" data-content="Votre&nbsp;r&eacute;ussite&nbsp;est&nbsp;en&nbsp;marche">
 			Votre&nbsp;r&eacute;ussite&nbsp;est&nbsp;en&nbsp;marche
 		</h1>
@@ -144,7 +144,9 @@
 			<div class="col-md-12">
 				<div id="map" class="module"></div>
 				<div id="timecont" class="module">
+					<img src="img/marker-xxl.png" style="position:'absolute';height:50px;width:50px;margin-left:430px;">
 					<div id="timeline"></div>
+					<img class="reverse" src="img/marker-xxl.png" style="position:'absolute';height:50px;width:50px;margin-left:730px;">
 				</div>
 			</div>
 		  </div>
@@ -353,9 +355,9 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	    dataTable.addColumn({ type: 'date', id: 'Start' });
 	    dataTable.addColumn({ type: 'date', id: 'End' });
 	    dataTable.addRows([
-	      [ 'Formation', 'Début de formation', new Date(2016, 3, 3), new Date(2016, 3, 4) ],
-	      [ 'Formation', 'Formation', new Date(2016, 3, 4), new Date(2016, 6, 12) ],
-	      [ 'Formation', 'Fin de la formation', new Date(2016, 6, 12), new Date(2016, 6, 13) ]]);
+	      [ 'Formation', 'Formation', new Date(2016, 3, 3), new Date(2017, 5, 4) ],
+	      [ 'Formation', "Recherche d'emploi", new Date(2017, 5, 5), new Date(2018, 6, 12) ],
+	      [ 'Formation', 'Job trouve !', new Date(2018, 6, 13), new Date(2018, 6, 14) ]]);
 
 	    var options = {
 	      timeline: { groupByRowLabel: true },
