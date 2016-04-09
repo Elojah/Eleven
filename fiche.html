@@ -16,6 +16,10 @@
 <link rel="stylesheet" type="text/css" href="css/multi-screen-css.css">
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
+<!-- Font -->
+<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:500' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
+
 </head>
 
 <!-- DOM -->
@@ -26,18 +30,29 @@
 		<h1 id="load0" class="load0" data-content="Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?">
 			Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?
 		</h1>
+		<div class="spinner"></div>
 	</div>
 	<div id="screen2" class="ms-container">
 		<div class="img-container">
-			<img id="img2" src="img/criteres.jpg" class="ms-nav-link" data-ms-target="screen3" data-ms-animation="right" onclick="$('#critere').css('visibility', 'visible');$('#img3').photoResize()"></img>
+			<img id="img2" src="img/criteres.jpg" class="ms-nav-link" data-ms-target="screen3" data-ms-animation="right"></img>
 		</div>
 	</div>
-	<div id="screen3" class="ms-container">
-		<div class="img-container">
-			<img id="img3" src="img/lib.jpg" class="ms-nav-link img-resize" data-ms-target="screen4" data-ms-animation="fadeleft" onclick="initMap();initTimeLine()"></img>
+	<div id="screen3" class="ms-container ms-default">
+		<h1 id="load1" class="load0" data-content="Votre&nbsp;r&eacute;ussite&nbsp;est&nbsp;en&nbsp;marche">
+			Votre&nbsp;r&eacute;ussite&nbsp;est&nbsp;en&nbsp;marche
+		</h1>
+		<div class="spinner1">
+		  <div class="bounce1"></div>
+		  <div class="bounce2"></div>
+		  <div class="bounce3"></div>
 		</div>
 	</div>
 	<div id="screen4" class="ms-container">
+		<div class="img-container">
+			<img id="img3" src="img/lib.jpg" class="ms-nav-link img-resize" data-ms-target="screen5" data-ms-animation="right" onclick="initMap();initTimeLine()"></img>
+		</div>
+	</div>
+	<div id="screen5" class="ms-container">
 		<div class="container">
 			<h2 class="center">DESCRIPTION DE LA FORMATION</h2>
 			<div class="row">
@@ -307,11 +322,21 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	load0.addEventListener(animationEvent, function (event) {
 		console.log("Animation ended")
 		$('#img2').photoResize();
-		$('#header').css('visibility', "visible");
+		var load0sec = document.getElementById('load0');
+		load0sec.style.backgroundColor = '#f5f7f6';
 		document.body.style.backgroundColor = '#f5f7f6';
-		MultiScreen.switch_screens({target_id: 'screen2', 'animation_command': "bottom"});
-	}
-	);
+		MultiScreen.switch_screens({target_id: 'screen2', 'animation_command': "right"});
+	});
+	var load1 = document.getElementById('load1');
+	load1.addEventListener(animationEvent, function (event) {
+		console.log("Animation ended")
+		$('#critere').css('visibility', 'visible');
+		$('#img3').photoResize();
+		var load0sec = document.getElementById('load1');
+		load0sec.style.backgroundColor = '#f5f7f6';
+		document.body.style.backgroundColor = '#f5f7f6';
+		MultiScreen.switch_screens({target_id: 'screen4', 'animation_command': "right"});
+	});
 </script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
