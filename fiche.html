@@ -6,8 +6,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 <!-- Bootstrap -->
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
-<!-- <link href="css/bootstrap-rating.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link href="css/bootstrap-rating.css" rel="stylesheet">
 
 <!-- CSS -->
 <link href='css/fiche.css' rel='stylesheet' type='text/css'>
@@ -22,7 +22,7 @@
 <body>
 	<div id="header" class="header"></div>
 	<div id="critere" class="critere"></div>
-	<div id="screen1" class="ms-container ms-default">
+	<div id="screen1" class="ms-container">
 		<h1 id="load0" class="load0" data-content="Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?">
 			Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?
 		</h1>
@@ -34,13 +34,11 @@
 	</div>
 	<div id="screen3" class="ms-container">
 		<div class="img-container">
-			<img id="img3" src="img/lib.jpg" class="ms-nav-link img-resize" data-ms-target="screen4" data-ms-animation="fadeleft"></img>
+			<img id="img3" src="img/lib.jpg" class="ms-nav-link img-resize" data-ms-target="screen4" data-ms-animation="fadeleft" onclick="initMap()"></img>
 		</div>
 	</div>
-	<div id="screen4" class="ms-container">
-	<canvas id="myChart"></canvas>
-		<nav class="navbar navbar-default">
-		</nav>
+	<div id="screen4" class="ms-container ms-default">
+	<canvas id=""></canvas>
 		<div class="container">
 			<h2 class="center">DESCRIPTION DE LA FORMATION</h2>
 			<div class="row">
@@ -48,15 +46,30 @@
 					<div class="module">
 						<div class="row">
 							<div class="col-sm-3">
-								PICTURE
+								<div class="row">
+									<div class="col-sm-12">
+										<img src="img/hec.jpg" alt="HEC" height="" width="100%">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-4">
+										<img src="img/video.png" alt="video" height="" width="100%" onclick="$('#map').css('height', '0px');$('#timeline').css('height', '250px');">
+									</div>
+									<div class="col-xs-4">
+										<img src="img/map.png" alt="map" height="" width="100%" onclick="$('#map').css('height', '250px');$('#timeline').css('height', '0px');">
+									</div>
+									<div class="col-xs-4">
+										<img src="img/basket.png" alt="basket" height="" width="100%" onclick="">
+									</div>
+								</div>
 							</div>
 							<div class="col-sm-9">
-								TRUifhdgio hfdgio hfdog gfdg df
-								g
-								dfg
-								fdh
-								fg
-								fdg dfg dfhgdh fgh fgh d
+								<p>
+									La mission d’HEC est double. Elle est à la fois de former les décideurs de demain, quels que soient leurs origines et leurs lieux d’exercice, et de participer activement à la production de nouveaux savoirs en management.
+								</p>
+								<p>
+									Créée en 1881 par la Chambre de commerce et d’industrie de Paris, HEC Paris a pour vocation de former des talents à fort potentiel, capables d’appréhender dans un environnement multiculturel les grands enjeux sociaux, politiques et économiques de demain. Ce qui rend HEC unique, c'est notamment sa capacité à rester compétitive en proposant des enseignements qui conjuguent performance et savoir être. Un mode de vie qu'on nous envie, une manière d'appréhender le monde que la marque revendique à travers sa devise : « Apprendre à oser ».
+								</p>
 							</div>
 						</div>
 					</div>
@@ -79,7 +92,31 @@
 						</div>
 						<div class="row">
 							<div class="center col-sm-6">
-								COMPETENCES
+								OBJECTIFS
+							</div>
+							<div class="center col-sm-6">
+								<input type="hidden" class="rating"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="center col-sm-6">
+								EQUIPE
+							</div>
+							<div class="center col-sm-6">
+								<input type="hidden" class="rating"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="center col-sm-6">
+								ACCUEIL
+							</div>
+							<div class="center col-sm-6">
+								<input type="hidden" class="rating"/>
+							</div>
+						</div>
+						<div class="row">
+							<div class="center col-sm-6">
+								METHODES
 							</div>
 							<div class="center col-sm-6">
 								<input type="hidden" class="rating"/>
@@ -91,8 +128,7 @@
 			</div>
 		  <div class="row">
 			<div class="col-md-12">
-				<div id="map" class="module">
-				</div>
+				<div id="map" class="module"></div>
 			</div>
 		  </div>
 		<h2 class="center">COMMENTAIRES</h2>
@@ -244,7 +280,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 
 
 <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQE4ZUjkFVJjQ4jFn2C4nsJadlHBMtlLg&callback=initMap">
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQE4ZUjkFVJjQ4jFn2C4nsJadlHBMtlLg">
 </script>
 <script type="text/javascript">
 	function whichAnimationEvent(){
@@ -269,6 +305,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 		console.log("Animation ended")
 		$('#img2').photoResize();
 		$('#header').css('visibility', "visible");
+		document.body.style.backgroundColor = '#f5f7f6';
 		MultiScreen.switch_screens({target_id: 'screen2', 'animation_command': "bottom"});
 	}
 	);

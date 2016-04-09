@@ -59,9 +59,9 @@
 
             // Strings to be formatted (for example localization)
             textareaPlaceholderText: 'Add a comment',
-            newestText: 'Newest',
-            oldestText: 'Oldest',
-            popularText: 'Popular',
+            newestText: 'pertinents',
+            oldestText: 'récents',
+            popularText: 'proche',
             attachmentsText: 'Attachments',
             sendText: 'Send',
             replyText: 'Reply',

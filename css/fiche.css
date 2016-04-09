@@ -33,7 +33,7 @@ body {
 }
 
 #comments-users, #comments-firms {
-	height: 250px;
+	height: 300px;
 	overflow: scroll;
 }
 
@@ -46,6 +46,16 @@ body {
 	padding: 5px;
 	background-color: #FFFFFF;
 	border: #cdcdcd 1px solid;
+}
+.row {
+	padding: 5px;
+}
+
+p {
+	text-align: justify;
+}
+.col-xs-4 {
+	margin-top: 15%;
 }
 
 @keyframes loading {
