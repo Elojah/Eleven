@@ -1,13 +1,16 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
 	background-color: #f4f4f4;
 }
 
-header {
-}
 
-timeline {
-	height: 400px;
-	width: 100%;
+header {
 }
 
 #comments-users, #comments-firms {
@@ -15,14 +18,8 @@ timeline {
 	overflow: scroll;
 }
 
-html, body {
-    height: 100%;
-}
 #map {
 	height: 250px;
-}
-.row {
-
 }
 .module {
 	margin-top: 10px;
@@ -31,6 +28,28 @@ html, body {
 	background-color: #FFFFFF;
 	border: #cdcdcd 1px solid;
 }
+
+@keyframes loading {
+	from {
+		max-width: 0;
+	}
+}
+h1 {
+	position: absolute;
+	margin-left: 20%;
+	margin-top: 20%;
+	color: #4f4f4f;
+	font: 900 800% Baskerville, 'Palatino Linotype', Palatino, serif;
+}
+h1:before {
+	content: attr(data-content);
+	position: absolute;
+	overflow: hidden;
+	max-width: 10em;
+	color: white;
+	animation: loading 0.5s linear;
+}
 .center {
 	text-align: center;
 }
+
