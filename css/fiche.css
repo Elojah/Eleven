@@ -39,6 +39,7 @@ body {
 
 #map {
 	height: 250px;
+	display: none;
 }
 .module {
 	margin-top: 10px;
@@ -113,4 +114,11 @@ h1:before {
 .center {
 	text-align: center;
 }
-
+#timeline {
+	height: 250px;
+	width: 100%;
+}
+#timecont {
+	padding: 120px;
+	height: 250px;
+}
