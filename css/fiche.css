@@ -238,3 +238,10 @@ p {
     transform: scale(1.0);
   }
 }
+
+#basket {
+	right: 30px;
+	top: 200px;
+	width: 30px;
+	position: absolute;
+}
