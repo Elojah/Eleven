@@ -2,9 +2,6 @@
 <html>
 <head>
 
-<!-- CSS -->
-<link href='css/fiche.css' rel='stylesheet' type='text/css'>
-
 <!-- Timeline -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -18,6 +15,14 @@
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-comments.js"></script>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link href="css/bootstrap-rating.css" rel="stylesheet">
+<script type="text/javascript" src="js/bootstrap-rating.js"></script>
+
+<!-- CSS -->
+<link href='css/fiche.css' rel='stylesheet' type='text/css'>
 
 <!-- Timeline -->
 <script type="text/javascript">
@@ -53,12 +58,46 @@
 
 <script type="text/javascript">
 	$(function() {
-		$('#comments-container').comments({
+		$('#comments-users').comments({
+			profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/user_profiles/user-icon.png',
+			roundProfilePictures: true,
+			textareaRows: 1,
+			getComments: function(success, error) {
+				setTimeout(function() {
+					success(commentsArray);
+				}, 500);
+			},
+			postComment: function(data, success, error) {
+				setTimeout(function() {
+					success(data);
+				}, 500);
+			},
+			putComment: function(data, success, error) {
+				setTimeout(function() {
+					success(data);
+				}, 500);
+			},
+			deleteComment: function(data, success, error) {
+				setTimeout(function() {
+					success();
+				}, 500);
+			},
+			upvoteComment: function(data, success, error) {
+				setTimeout(function() {
+					success(data);
+				}, 500);
+			},
+			uploadAttachments: function(dataArray, success, error) {
+				setTimeout(function() {
+					success(dataArray);
+				}, 500);
+			},
+		});
+		$('#comments-firms').comments({
 			profilePictureURL: 'https://viima-app.s3.amazonaws.com/media/user_profiles/user-icon.png',
 			roundProfilePictures: true,
 			textareaRows: 1,
 			enableAttachments: true,
-			forceResponsive: true,
 			getComments: function(success, error) {
 				setTimeout(function() {
 					success(commentsArray);
@@ -95,22 +134,22 @@
 
 <script type="text/javascript">
 	function initMap() {
-  var directionsDisplay = new google.maps.DirectionsRenderer;
-  var directionsService = new google.maps.DirectionsService;
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
-    center: {lat: 37.77, lng: -122.447}
-  });
-  directionsDisplay.setMap(map);
+	  var directionsDisplay = new google.maps.DirectionsRenderer;
+	  var directionsService = new google.maps.DirectionsService;
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	    zoom: 14,
+	    center: {lat: 37.77, lng: -122.447}
+	  });
+	  directionsDisplay.setMap(map);
 
-  calculateAndDisplayRoute(directionsService, directionsDisplay);
+	  calculateAndDisplayRoute(directionsService, directionsDisplay);
 }
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   var selectedMode = "DRIVING";
   directionsService.route({
-    origin: {lat: 48.580808, lng: 7.737442},  // Haight.
-    destination: {lat: 48.872898, lng: 2.390713},  // Ocean Beach.
+    origin: {lat: 48.580808, lng: 7.737442},
+    destination: {lat: 48.872898, lng: 2.390713},
     // Note that Javascript allows us to access the constant
     // using square brackets and a string value as its
     // "property."
@@ -125,13 +164,98 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 }
 </script>
 
+ <script>
+      $(function () {
+        $('input.check').on('change', function () {
+          alert('Rating: ' + $(this).val());
+        });
+        $('#programmatically-set').click(function () {
+          $('#programmatically-rating').rating('rate', $('#programmatically-value').val());
+        });
+        $('#programmatically-get').click(function () {
+          alert($('#programmatically-rating').rating('rate'));
+        });
+      });
+    </script>
+
 </head>
 
 <!-- DOM -->
 <body>
-	<div id="timeline" class="timeline"></div>
-	<div id="map"></div>
-<	<div id="comments-container"></div>
+	<nav class="navbar navbar-default">
+	</nav>
+	<div class="container">
+		<h2 class="center">DESCRIPTION DE LA FORMATION</h2>
+		<div class="row">
+			<div class="col-sm-8">
+				<div class="module">
+					<div class="row">
+						<div class="col-sm-3">
+							PICTURE
+						</div>
+						<div class="col-sm-9">
+							TRUifhdgio hfdgio hfdog gfdg df
+							g
+							dfg 
+							fdh
+							fg
+							fdg dfg dfhgdh fgh fgh d
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="module">
+					<div class="center">
+						<h3>Default rating</h3>
+					</div>
+					<div class="center">
+						<input type="hidden" class="rating"/>
+					</div>
+					<div class="row">
+						<div class="center col-sm-6">
+							COMPETENCES
+						</div>
+						<div class="center col-sm-6">
+							<input type="hidden" class="rating"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="center col-sm-6">
+							COMPETENCES
+						</div>
+						<div class="center col-sm-6">
+							<input type="hidden" class="rating"/>
+						</div>
+					</div>
+					</h4>
+				</div>
+			</div>
+		</div>
+	  <!-- <div class="row">
+		<div id="timeline" class="timeline"></div>
+	  </div> -->
+	  <div class="row">
+		<div class="col-md-12">
+			<div id="map" class="module">
+			</div>
+		</div>
+	  </div>
+	<h2 class="center">COMMENTAIRES</h2>
+	  <div class="row">
+    	<div class="col-sm-6">
+		  	<div class="module">
+				<div id="comments-users"></div>
+		    </div>
+	    </div>
+    	<div class="col-sm-6">
+		    <div class="module">
+				<!-- <div id="comments-firms"></div> -->
+			</div>
+	    </div>
+	  </div>
+	</div>
+
 </body>
 </script>
     <script async defer
