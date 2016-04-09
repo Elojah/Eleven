@@ -1,6 +1,13 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
 	background-color: #f4f4f4;
 }
+
 
 header {
 }
@@ -39,5 +46,5 @@ h1:before {
 	overflow: hidden;
 	max-width: 10em;
 	color: white;
-	animation: loading 2.5s linear;
+	animation: loading 0.5s linear;
 }
