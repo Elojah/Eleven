@@ -20,16 +20,22 @@
 
 <!-- DOM -->
 <body>
+	<div id="header" class="header"></div>
+	<div id="critere" class="critere"></div>
 	<div id="screen1" class="ms-container ms-default">
 		<h1 id="load0" class="load0" data-content="Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?">
 			Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?
 		</h1>
 	</div>
 	<div id="screen2" class="ms-container">
-		<img id="img2" src="img/critere.png" class="ms-nav-link" data-ms-target="screen3" data-ms-animation="right" onclick="$('#img3').photoResize()"></img>
+		<div class="img-container">
+			<img id="img2" src="img/criteres.jpg" class="ms-nav-link" data-ms-target="screen3" data-ms-animation="right" onclick="$('#critere').css('visibility', 'visible');$('#img3').photoResize()"></img>
+		</div>
 	</div>
 	<div id="screen3" class="ms-container">
-		<img id="img3" src="img/formation.png" class="ms-nav-link" data-ms-target="screen4" data-ms-animation="fadeleft"></img>
+		<div class="img-container">
+			<img id="img3" src="img/lib.jpg" class="ms-nav-link img-resize" data-ms-target="screen4" data-ms-animation="fadeleft"></img>
+		</div>
 	</div>
 	<div id="screen4" class="ms-container">
 	<canvas id="myChart"></canvas>
@@ -47,7 +53,7 @@
 							<div class="col-sm-9">
 								TRUifhdgio hfdgio hfdog gfdg df
 								g
-								dfg 
+								dfg
 								fdh
 								fg
 								fdg dfg dfhgdh fgh fgh d
@@ -262,6 +268,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	load0.addEventListener(animationEvent, function (event) {
 		console.log("Animation ended")
 		$('#img2').photoResize();
+		$('#header').css('visibility', "visible");
 		MultiScreen.switch_screens({target_id: 'screen2', 'animation_command': "bottom"});
 	}
 	);
@@ -272,6 +279,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	var ctx = $("#myChart").get(0).getContext("2d");
 	var myNewChart = new Chart(ctx);
 
+	Chart.Scale.prototype.buildYLabels = function () {
+	  this.yLabelWidth = 0;
+	};
+
 	Chart.defaults.global.responsive = true;
 	Chart.defaults.global.maintainAspectRatio = true;
 
@@ -279,18 +290,8 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	ctx.canvas.height = ctx.canvas.originalheight;
 
 	var data = {
-	    labels: ["January", "February", "March", "April", "May", "June", "July"],
+	    labels: ["", "Debut de la formation", "M1", "M2", "Diplome obtenu", "Recherche d'emploi", "Job trouve"],
 	    datasets: [
-	        {
-	            label: "My First dataset",
-	            fillColor: "rgba(220,220,220,0.2)",
-	            strokeColor: "rgba(220,220,220,1)",
-	            pointColor: "rgba(220,220,220,1)",
-	            pointStrokeColor: "#fff",
-	            pointHighlightFill: "#fff",
-	            pointHighlightStroke: "rgba(220,220,220,1)",
-	            data: [65, 59, 80, 81, 56, 55, 40]
-	        },
 	        {
 	            label: "My Second dataset",
 	            fillColor: "rgba(151,187,205,0.2)",
@@ -299,12 +300,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
 	            pointStrokeColor: "#fff",
 	            pointHighlightFill: "#fff",
 	            pointHighlightStroke: "rgba(151,187,205,1)",
-	            data: [28, 48, 40, 19, 86, 27, 90]
+	            data: [0, 0, 0, 0, 0, 0, 0]
 	        }
 	    ]
 	};
 
 	var options = {
+
 	///Boolean - Whether grid lines are shown across the chart
     scaleShowGridLines : false,
 	//String - Colour of the grid lines
