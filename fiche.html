@@ -14,7 +14,11 @@
 <link rel="stylesheet" type="text/css" href="css/jquery-comments.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/multi-screen-css.css">
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- Font -->
+<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:500' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arvo:400,700' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -26,20 +30,32 @@
 		<h1 id="load0" class="load0" data-content="Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?">
 			Et&nbsp;si&nbsp;c'&eacute;tait&nbsp;vous&nbsp;?
 		</h1>
+		<div class="spinner"></div>
 	</div>
 	<div id="screen2" class="ms-container">
 		<div class="img-container">
-			<img id="img2" src="img/criteres.jpg" class="ms-nav-link" data-ms-target="screen3" data-ms-animation="right" onclick="$('#critere').css('visibility', 'visible');$('#img3').photoResize()"></img>
+			<img id="img2" src="img/criteres.jpg" class="ms-nav-link" data-ms-target="screen3" data-ms-animation="right"></img>
 		</div>
 	</div>
 	<div id="screen3" class="ms-container">
-		<div class="img-container">
-			<img id="img3" src="img/lib.jpg" class="ms-nav-link img-resize" data-ms-target="screen4" data-ms-animation="fadeleft" onclick="initMap();initTimeLine()"></img>
+		<h1 id="load1" class="load0" data-content="Votre&nbsp;r&eacute;ussite&nbsp;est&nbsp;en&nbsp;marche">
+			Votre&nbsp;r&eacute;ussite&nbsp;est&nbsp;en&nbsp;marche
+		</h1>
+		<div class="spinner1">
+		  <div class="bounce1"></div>
+		  <div class="bounce2"></div>
+		  <div class="bounce3"></div>
 		</div>
 	</div>
 	<div id="screen4" class="ms-container">
+		<div class="img-container">
+			<img id="img3" src="img/lib.jpg" class="ms-nav-link img-resize" data-ms-exit-time="700" data-ms-enter-time="700" data-ms-target="screen5" data-ms-animation="right" onclick="initMap();initTimeLine()"></img>
+		</div>
+	</div>
+	<div id="screen5" class="ms-container">
 		<div class="container">
 			<h2 class="center">DESCRIPTION DE LA FORMATION</h2>
+			<img id="basket" src="img/basket.svg" alt="basket" class="ms-nav-link" data-ms-exit-time="700" data-ms-enter-time="700" data-ms-target="screen3" data-ms-animation="right">
 			<div class="row">
 				<div class="col-sm-8">
 					<div class="module">
@@ -79,7 +95,7 @@
 				<div class="col-sm-4">
 					<div class="module">
 						<div class="center">
-							<h3>Default rating</h3>
+							<h3>Note g&eacute;n&eacute;rale</h3>
 						</div>
 						<div class="center">
 							<input type="hidden" class="rating"/>
@@ -132,7 +148,9 @@
 		  		<div id="map" class="module">	
 				</div>
 				<div id="timecont" class="module">
+					<img src="img/marker-xxl.png" style="position:'absolute';height:50px;width:50px;margin-left:430px;">
 					<div id="timeline"></div>
+					<img class="reverse" src="img/marker-xxl.png" style="position:'absolute';height:50px;width:50px;margin-left:730px;">
 				</div>
 			</div>
 			<div class="col-md-12">
@@ -346,11 +364,21 @@
 	load0.addEventListener(animationEvent, function (event) {
 		console.log("Animation ended")
 		$('#img2').photoResize();
-		$('#header').css('visibility', "visible");
+		var load0sec = document.getElementById('load0');
+		load0sec.style.backgroundColor = '#f5f7f6';
 		document.body.style.backgroundColor = '#f5f7f6';
-		MultiScreen.switch_screens({target_id: 'screen2', 'animation_command': "bottom"});
-	}
-	);
+		MultiScreen.switch_screens({target_id: 'screen2', 'animation_time': 700, 'animation_command': "right"});
+	});
+	var load1 = document.getElementById('load1');
+	load1.addEventListener(animationEvent, function (event) {
+		console.log("Animation ended")
+		$('#critere').css('visibility', 'visible');
+		$('#img3').photoResize();
+		var load0sec = document.getElementById('load1');
+		load0sec.style.backgroundColor = '#f5f7f6';
+		document.body.style.backgroundColor = '#f5f7f6';
+		MultiScreen.switch_screens({target_id: 'screen4', 'animation_time': 700, 'animation_command': "right"});
+	});
 </script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -367,9 +395,9 @@
 	    dataTable.addColumn({ type: 'date', id: 'Start' });
 	    dataTable.addColumn({ type: 'date', id: 'End' });
 	    dataTable.addRows([
-	      [ 'Formation', 'Début de formation', new Date(2016, 3, 3), new Date(2016, 3, 4) ],
-	      [ 'Formation', 'Formation', new Date(2016, 3, 4), new Date(2016, 6, 12) ],
-	      [ 'Formation', 'Fin de la formation', new Date(2016, 6, 12), new Date(2016, 6, 13) ]]);
+	      [ 'Formation', 'Formation', new Date(2016, 3, 3), new Date(2017, 5, 4) ],
+	      [ 'Formation', "Recherche d'emploi", new Date(2017, 5, 5), new Date(2018, 6, 12) ],
+	      [ 'Formation', 'Job trouve !', new Date(2018, 6, 13), new Date(2018, 6, 14) ]]);
 
 	    var options = {
 	      timeline: { groupByRowLabel: true },
