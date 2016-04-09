@@ -1429,13 +1429,14 @@
         createCommentElement: function(commentModel) {
 
             // Comment container element
+            var bidule =false;
             var commentEl = $('<li/>', {
                 'data-id': commentModel.id,
                 'class': 'comment'
             }).data('model', commentModel);
 
             if(commentModel.createdByCurrentUser) commentEl.addClass('by-current-user');
-            if(commentModel.createdByAdmin) commentEl.addClass('by-admin');
+            if(commentModel.createdByAdmin) bidule = true;
 
             // Child comments
             var childComments = $('<ul/>', {
@@ -1444,7 +1445,8 @@
 
             // Comment wrapper
             var commentWrapper = this.createCommentWrapperElement(commentModel);
-
+            if (bidule == false)
+                commentEl.append(commentWrapper.append('<span style="margin-left: 75%;"><a>contacter</a>&bull;<a>parcours</a></span>'));
             commentEl.append(commentWrapper);
             if(commentModel.parent == null) commentEl.append(childComments);
             return commentEl;
@@ -1480,7 +1482,7 @@
             }
 
             // Highlight name for own comments and admin
-            if(commentModel.createdByCurrentUser || commentModel.createdByAdmin) name.addClass('highlight-font-bold');
+            // if(commentModel.createdByCurrentUser || commentModel.createdByAdmin) ;
 
             // Show reply-to name if parent of parent exists
             if(commentModel.parent) {

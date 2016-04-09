@@ -1,0 +1,124 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	background-color: #308CE7;
+}
+
+
+#header {
+	background-image: url("../img/header.jpg");
+	position: fixed;
+	height: 190px;
+	top: 0;
+	width: 1920px;
+	z-index: 10;
+	visibility: hidden;
+	background-size: 1920px 190px;
+}
+
+#critere {
+	background-image: url("../img/panel.jpg");
+	position: fixed;
+	height: 890px;
+	top: 190px;
+	width: 463px;
+	z-index: 10;
+	visibility: hidden;
+	background-size: 463px 890px;
+}
+
+#comments-users, #comments-firms {
+	height: 300px;
+	overflow: scroll;
+}
+
+#map {
+	height: 250px;
+	display: none;
+}
+.module {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px;
+	background-color: #FFFFFF;
+	border: #cdcdcd 1px solid;
+}
+.row {
+	padding: 5px;
+}
+
+p {
+	text-align: justify;
+}
+.col-xs-4 {
+	margin-top: 15%;
+}
+
+@keyframes loading {
+	from {
+		max-width: 0;
+	}
+}
+
+#screen1 {
+	background-color: #308CE7;
+}
+
+#load0 {
+	background-color: #308CE7;
+}
+
+.ms-container {
+	padding-top: 190px;
+	padding-left: 463px;
+}
+
+
+#img2 {
+	width: 1920px;
+	height: 890px;
+	margin-left: -463px;
+}
+
+.img-resize {
+	width: 1457px;
+	height: 890px;
+}
+
+h1 {
+	background-color: #308CE7;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 200px;
+	color: #121212;
+	font-family: 'Raleway',sans-serif;
+	font-size: 48px;
+	font-weight: 800;
+	line-height: 48px;
+	text-align: center;
+}
+h1:before {
+	content: attr(data-content);
+	position: absolute;
+	overflow: hidden;
+	max-width: 10em;
+	color: white;
+	animation: loading 0.5s linear;
+}
+.center {
+	text-align: center;
+}
+#timeline {
+	height: 250px;
+	width: 100%;
+}
+#timecont {
+	padding: 120px;
+	height: 250px;
+}
