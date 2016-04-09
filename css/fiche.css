@@ -65,6 +65,7 @@ body {
 .ms-container {
 	padding-top: 190px;
 	padding-left: 463px;
+	background-color: #f4f4f4;
 }
 
 
@@ -104,3 +105,11 @@ h1:before {
 	text-align: center;
 }
 
+#timeline {
+	height: 200px;
+}
+
+#map {
+	height: 0px;
+	visibility: hidden;
+}
